@@ -1,10 +1,11 @@
-package nyc.c4q.leighdouglas.dec21exam;
+package nyc.c4q.leighdouglas.dec21exam.recyclerview;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import nyc.c4q.leighdouglas.dec21exam.R;
 import nyc.c4q.leighdouglas.dec21exam.model.Animal;
 
 /**
@@ -13,13 +14,22 @@ import nyc.c4q.leighdouglas.dec21exam.model.Animal;
 
 public class AnimalViewHolder extends RecyclerView.ViewHolder {
     private TextView textView;
+
     public AnimalViewHolder(View itemView) {
         super(itemView);
         textView = (TextView) itemView.findViewById(R.id.name);
+
     }
 
-    public void bind(Animal animal){
+    public void bind(final Animal animal) {
         textView.setTextColor(Color.parseColor(animal.getTextColor()));
-        textView.setHint(animal.getName());
+        textView.setText(animal.getName());
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View mView = (View) view.getParent();
+                mView.setBackgroundColor(Color.parseColor(animal.getBackground()));
+            }
+        });
     }
 }
