@@ -10,8 +10,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.activity_main, new AnimalFragment())
-                .commit();
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction()
+                    .add(R.id.activity_main, new AnimalFragment())
+                    .commit();
+        }
     }
 }
