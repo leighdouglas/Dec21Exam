@@ -1,7 +1,10 @@
 package nyc.c4q.leighdouglas.dec21exam;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -32,6 +37,7 @@ public class AnimalFragment extends Fragment {
     private RecyclerView recyclerView;
 
 
+
     private static String TAG = "Retrofit";
 
     @Nullable
@@ -42,6 +48,7 @@ public class AnimalFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
         return view;
     }
 
@@ -69,6 +76,8 @@ public class AnimalFragment extends Fragment {
                         adapter.setmAnimalList(response.body().getAnimals());
                     } else {
                         Log.d(TAG, "Error" + response.errorBody().string());
+                        Toast.makeText(getActivity(), "Error downloading data",
+                                Toast.LENGTH_LONG).show();
                     }
                 } catch (IOException e) {
                     Log.e(TAG, e.getMessage());
@@ -77,8 +86,9 @@ public class AnimalFragment extends Fragment {
 
             @Override
             public void onFailure(Call<AnimalList> call, Throwable t) {
-                // Something went completely wrong (like no internet connection)
                 Log.d("Error", t.getMessage());
+                Toast.makeText(getActivity(), "Unable to download please connect to internet",
+                        Toast.LENGTH_LONG).show();
             }
         });
 

@@ -22,6 +22,9 @@ public class AnimalViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(final Animal animal) {
+        if (animal.getName().equalsIgnoreCase("lion")){
+            itemView.setBackgroundColor(Color.BLACK);
+        }
         textView.setTextColor(Color.parseColor(animal.getTextColor()));
         textView.setText(animal.getName());
         itemView.setOnClickListener(new View.OnClickListener() {
