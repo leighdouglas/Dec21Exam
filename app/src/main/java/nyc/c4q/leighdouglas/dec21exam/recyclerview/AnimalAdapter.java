@@ -1,4 +1,4 @@
-package nyc.c4q.leighdouglas.dec21exam;
+package nyc.c4q.leighdouglas.dec21exam.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import nyc.c4q.leighdouglas.dec21exam.R;
 import nyc.c4q.leighdouglas.dec21exam.model.Animal;
 
 /**

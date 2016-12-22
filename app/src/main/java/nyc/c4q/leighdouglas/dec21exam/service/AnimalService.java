@@ -13,4 +13,4 @@ public interface AnimalService {
 
     @GET("cgi-bin/12_21_2016_exam.pl")
     Call<AnimalList> getAnimals();
- }
+}

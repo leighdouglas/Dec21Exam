@@ -1,6 +1,7 @@
 package nyc.c4q.leighdouglas.dec21exam;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import java.io.IOException;
 
 import nyc.c4q.leighdouglas.dec21exam.model.AnimalList;
+import nyc.c4q.leighdouglas.dec21exam.recyclerview.AnimalAdapter;
 import nyc.c4q.leighdouglas.dec21exam.service.AnimalService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +30,7 @@ public class AnimalFragment extends Fragment {
 
     private AnimalAdapter adapter;
     private RecyclerView recyclerView;
+
 
     private static String TAG = "Retrofit";
 
@@ -48,7 +51,7 @@ public class AnimalFragment extends Fragment {
         runRetrofitCall();
     }
 
-    private void runRetrofitCall(){
+    private void runRetrofitCall() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(AnimalService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -78,5 +81,6 @@ public class AnimalFragment extends Fragment {
                 Log.d("Error", t.getMessage());
             }
         });
+
     }
 }
